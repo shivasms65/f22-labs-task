@@ -1,0 +1,3 @@
+export PATH="/Users/noentry/.rvm/gems/ruby-2.6.3/bin:/Users/noentry/.rvm/gems/ruby-2.6.3@global/bin:/Users/noentry/.rvm/rubies/ruby-2.6.3/bin:$PATH"
+export GEM_PATH="/Users/noentry/.rvm/gems/ruby-2.6.3:/Users/noentry/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0"
+export GEM_HOME="/Users/noentry/.rvm/gems/ruby-2.6.3"
