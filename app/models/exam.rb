@@ -1,4 +1,6 @@
 class Exam < ApplicationRecord
+  include QuestionConcerns
+
   has_many :subjects
   has_many :topics, through: :subjects
   has_many :chapters, through: :topics

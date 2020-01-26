@@ -1,4 +1,6 @@
 class Subject < ApplicationRecord
+  include QuestionConcerns
+
   belongs_to :exam
   has_many :topics
   has_many :chapters, through: :topics

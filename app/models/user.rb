@@ -3,11 +3,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
 
-  def questions
-
-  end
-
   def skipped_questions
-    answers.where(option_id: nil)
+    Question.where(id: answers.where(option_id: nil))
   end
 end
