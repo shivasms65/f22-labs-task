@@ -5,9 +5,16 @@ class Question < ApplicationRecord
 
   validates :description, presence: true
 
-  scope :user_attended_questions, ->(user_id) { Question.left_outer_joins(:answers).where(answers: { user_id: user_id }) }
+  scope :user_unseen_questions, ->(user) { where.not(id: user.answers.pluck(:question_id)) }
+  scope :user_attended_questions, ->(user_id) { joins(:answers).where(answers: { user_id: user_id }) }
   scope :user_answered_questions, ->(user_id) { user_attended_questions(user_id).where.not(answers: { option_id: nil }) }
   scope :user_skipped_questions, ->(user_id) { user_attended_questions(user_id).where(answers: { option_id: nil }) }
+  scope :user_correct_answered_questions, ->(user_id) { user_answered_questions(user_id).where("questions.valid_option_id = answers.option_id") }
+  scope :user_wrong_answered_questions, ->(user_id) { user_answered_questions(user_id).where("questions.valid_option_id != answers.option_id") }
+
+  # def user_unanswered_questions(user)
+  #   where.not(id: user.answers.pluck(:question_id))
+  # end
 
   enum complexity: [:easy, :medium, :hard]
 end

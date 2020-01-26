@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get '/:branch_type/:branch_id/questions', to: 'questions#index', constraints: lambda { |path_params, req| %w(exams subjects topics chapters).include?(path_params[:branch_type]) }, as: :questions
 
       resources :users, only: [] do
-        resources :results, only: :index
+        get '/:branch_type/:branch_id/results', to: 'results#index', constraints: lambda { |path_params, req| %w(exams subjects topics chapters).include?(path_params[:branch_type]) }, as: :user_results
       end
 
       resources :questions, only: [] do
