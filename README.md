@@ -23,11 +23,15 @@ Things you may want to cover:
 
 * ...
 
+
+
 Run:
 
-  bundle install
-  rails db:setup
-  rails s - Start the server and check the API
+ bundle install && 
+ rails db:setup &&
+ rails s 
+ 
+ - Start the server and check the Below API's
 
 
 API Info:-
