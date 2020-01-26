@@ -60,8 +60,9 @@ end
   i += 1
   user = User.create({ name: "User #{i}", email: "testing_#{i}" })
 
-  30.times do |i|
-    question_id = i+1
+  rand_id = rand(1..50)
+  30.times do |j|
+    question_id = rand_id + j
     option_id = rand(0..4)
     option_id = nil if option_id == 0
     answer = user.answers.create(question_id: question_id, option_id: option_id)
