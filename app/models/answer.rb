@@ -5,6 +5,8 @@ class Answer < ApplicationRecord
 
   validate :verify_answer_option
 
+  scope :skipped_question, -> { where(option_id: nil) }
+
   def self.create_user_answer(param)
     answer = Answer.where(user_id: param[:user_id], question_id: param[:question_id]).first_or_initialize
     answer.option_id = param[:option_id]
@@ -14,6 +16,7 @@ class Answer < ApplicationRecord
       return answer.errors
     end
   end
+
 
   private
 

@@ -18,7 +18,7 @@ module QuestionConcerns
     questions = self.questions.where.not(id: user.answers.pluck(:question_id)).order('rand()')
 
     if questions.blank?
-      user.skipped_questions
+      Question.user_skipped_questions(user.id)
     else
       questions
     end
