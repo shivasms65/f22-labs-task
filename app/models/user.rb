@@ -4,6 +4,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   def skipped_questions
-    Question.where(id: answers.where(option_id: nil))
+    Question.where(id: answers.where(option_id: nil)).order('rand()')
   end
 end
