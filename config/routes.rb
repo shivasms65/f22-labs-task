@@ -3,11 +3,10 @@ Rails.application.routes.draw do
 
   scope :api do
     scope :v1 do
-      
-      get '/:branch_type/:branch_id/questions', to: 'questions#index', constraints: lambda { |path_params, req| %w(exams subjects topics chapters).include?(path_params[:branch_type]) }, as: :questions
-
       resources :users, only: [] do
+        get '/:branch_type/:branch_id/questions', to: 'questions#index', constraints: lambda { |path_params, req| %w(exams subjects topics chapters).include?(path_params[:branch_type]) }, as: :questions
         get '/:branch_type/:branch_id/results', to: 'results#index', constraints: lambda { |path_params, req| %w(exams subjects topics chapters).include?(path_params[:branch_type]) }, as: :user_results
+        resources :results, only: [:index]
       end
 
       resources :questions, only: [] do

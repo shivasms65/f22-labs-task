@@ -1,5 +1,8 @@
-module QuestionConcerns
+module BranchConcerns
   extend ActiveSupport::Concern
+
+  included do
+  end
 
   def self.questions_by_branch(param)
     begin
@@ -22,7 +25,7 @@ module QuestionConcerns
     questions = self.questions.user_unseen_questions(user).order('rand()')
 
     if questions.blank?
-      user.skipped_questions
+      self.questions.user_skipped_questions(user).order('rand()')
     else
       questions
     end
@@ -30,18 +33,23 @@ module QuestionConcerns
 
   def self.fetch_user_results(param)
     begin
-      branch = get_branch(param)
-      branch.calculate_percentage(param[:user_id])
+      user = User.find_by_id(param[:user_id])
+      return [] unless user
+
+      if param.has_key?(:branch_type) && param.has_key?(:branch_id)
+        branch = get_branch(param)
+        branch.calculate_percentage(user)
+      else
+        user.results  
+      end
     rescue => exception
       puts "Error While Fetching Questions", exception
       return { errors: 'Error While Fetching Questions, Provided invalid params' }
     end
   end
 
-  def calculate_percentage(user_id)
+  def calculate_percentage(user)
     response = {}
-    user = User.find_by_id(user_id)
-    return [] unless user
 
     total_count = self.questions.count
     unseen_count = self.questions.user_unseen_questions(user).count

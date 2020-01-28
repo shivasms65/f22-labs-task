@@ -1,5 +1,5 @@
 class Subject < ApplicationRecord
-  include QuestionConcerns
+  include BranchConcerns
 
   belongs_to :exam
   has_many :topics

@@ -45,15 +45,16 @@ Chapter.import(chapters)
   j +=1
   chapter_id = rand(1..10)
   complexity = rand(3)
-  valid_option_id = rand(1..4)
 
-  question = Question.create({ description: "Question Description #{j}", complexity: complexity, valid_option_id: valid_option_id, chapter_id: chapter_id })
+  question = Question.create({ description: "Question Description #{j}", complexity: complexity, chapter_id: chapter_id })
 
   4.times do |j|
     j +=1
   
-    option = question.options.create({ description: "Question Description #{j}" })
+    question.options.create({ description: "Question Description #{j}" })
   end
+  question.valid_option_id = question.options.shuffle.first.id
+  question.save!
 end
 
 10.times do |i|
@@ -63,8 +64,9 @@ end
   rand_id = rand(1..50)
   30.times do |j|
     question_id = rand_id + j
+    question = Question.find(question_id)
     option_id = rand(0..4)
-    option_id = nil if option_id == 0
-    answer = user.answers.create(question_id: question_id, option_id: option_id)
+    option_id = option_id == 4 ? nil : question.options[option_id].id
+    user.answers.create!(question_id: question.id, option_id: option_id)
   end
 end

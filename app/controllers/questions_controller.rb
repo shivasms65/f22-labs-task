@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = QuestionConcerns.questions_by_branch(question_params)
+    @questions = BranchConcerns.questions_by_branch(question_params)
     render json: @questions
   end
 

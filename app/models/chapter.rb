@@ -1,5 +1,5 @@
 class Chapter < ApplicationRecord
-  include QuestionConcerns
+  include BranchConcerns
 
   belongs_to :topic
   has_many :questions

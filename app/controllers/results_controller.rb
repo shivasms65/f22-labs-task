@@ -1,6 +1,6 @@
 class ResultsController < ApplicationController
   def index
-    @response = QuestionConcerns.fetch_user_results(results_params)
+    @response = BranchConcerns.fetch_user_results(results_params)
     render json: @response
   end
 

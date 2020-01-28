@@ -7,6 +7,8 @@ class Answer < ApplicationRecord
 
   scope :skipped_question, -> { where(option_id: nil) }
 
+  after_save :update_results
+
   def self.create_user_answer(param)
     answer = Answer.where(user_id: param[:user_id], question_id: param[:question_id]).first_or_initialize
     answer.option_id = param[:option_id]
@@ -16,7 +18,6 @@ class Answer < ApplicationRecord
       return answer.errors
     end
   end
-
 
   private
 
@@ -29,5 +30,11 @@ class Answer < ApplicationRecord
     if !self.new_record? && !self.option_id_was.blank?
       errors.add(:question_id, message: "Question Already Answered")
     end
+  end
+
+  def update_results
+    if option
+      # chapter
+    end    
   end
 end
