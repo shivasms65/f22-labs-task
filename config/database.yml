@@ -1,9 +1,10 @@
 # Mysql Database
 default: &default
-  adapter: mysql2
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: root
+  # username: root
+  # password: root
   timeout: 5000
 
 development:

@@ -43,4 +43,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'activerecord-import', '~> 1.0', '>= 1.0.4'
-gem 'mysql2', '~> 0.5.3'
+# gem 'mysql2', '~> 0.5.3'
+gem 'pg', '~> 1.2', '>= 1.2.2' #For Heroku
