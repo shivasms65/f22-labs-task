@@ -28,8 +28,9 @@ Things you may want to cover:
 Run:
 
  bundle install && 
- rails db:setup &&
- rails s 
+ rails db:create &&
+ rails db:seed &&
+ rails s
  
  - Start the server and check the Below API's
 
