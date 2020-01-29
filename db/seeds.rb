@@ -51,7 +51,7 @@ Chapter.import(chapters)
   4.times do |j|
     j +=1
   
-    question.options.create({ description: "Question Description #{j}" })
+    question.options.create({ description: "Option Description #{j}" })
   end
   question.valid_option_id = question.options.shuffle.first.id
   question.save!

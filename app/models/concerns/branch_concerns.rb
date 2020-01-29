@@ -22,10 +22,10 @@ module BranchConcerns
     user = User.find_by_id(user_id)
     return Question.none unless user
 
-    questions = self.questions.user_unseen_questions(user).order('rand()')
+    questions = self.questions.user_unseen_questions(user).order('random()')
 
     if questions.blank?
-      self.questions.user_skipped_questions(user).order('rand()')
+      self.questions.user_skipped_questions(user).order('random()')
     else
       questions
     end

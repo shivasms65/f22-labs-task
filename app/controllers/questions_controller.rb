@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   def index
     @questions = BranchConcerns.questions_by_branch(question_params)
-    render json: @questions
+    render json: @questions.to_json(:include => :options)
   end
 
   private
