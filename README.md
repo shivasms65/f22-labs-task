@@ -65,5 +65,3 @@ Post: https://f22-labs.herokuapp.com/api/v1/questions/:question_id/answers
 	Get User Overall Results
 
 	user_id: User who's result is requesting
-
-	user_id: User who's result is requesting
