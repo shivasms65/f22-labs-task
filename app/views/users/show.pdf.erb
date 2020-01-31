@@ -1,0 +1,9 @@
+<p><%= @user.name %> Result</p>
+<table>
+  <% @user_results.each do |k, v| %>
+  <tr>
+    <td><%= k.to_s.humanize %></td>
+    <td><%= v.respond_to?(:name) ? v.name : v %></td>
+  </tr>
+  <% end %>
+</table>

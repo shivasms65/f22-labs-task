@@ -45,3 +45,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'activerecord-import', '~> 1.0', '>= 1.0.4'
 # gem 'mysql2', '~> 0.5.3'
 gem 'pg', '~> 1.2', '>= 1.2.2' #For Heroku
+gem 'rails_admin'
+gem 'sprockets', '~> 4.0'
+
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+
+gem "rails_admin_pdf", :git => "git://github.com/stephskardal/rails_admin_pdf.git"
+
+gem 'wicked_pdf', '~> 1.4'
+gem 'wkhtmltopdf-binary'
