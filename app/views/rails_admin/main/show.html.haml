@@ -14,5 +14,6 @@
             %dd.well
               = field.pretty_value
 
-%a{ :href => "/users/#{@object.id}.pdf", :title => "Meet the Team" }
-  Generate PDF Results
+- if @object.is_a?(User)
+  %a{ :href => "/users/#{@object.id}.pdf", :title => "Meet the Team" }
+    Generate PDF Results
