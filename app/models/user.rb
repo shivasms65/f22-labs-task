@@ -5,28 +5,10 @@ class User < ApplicationRecord
 
   scope :ranks, -> { joins(answers: [question: [chapter: [:topic]]]).select("users.id as id, count('questions.*') as correct_answers").where.not(answers: { option_id: nil }).where("questions.valid_option_id = answers.option_id").group('users.id').order('correct_answers desc') }
 
-  def skipped_questions
-    Question.user_skipped_questions(id)
-  end
-
-  def answered_questions
-    Question.user_answered_questions(id)
-  end
-
-  def attended_questions
-    Question.user_answered_questions(id)
-  end
-
-  def correct_answered_questions
-    Question.user_correct_answered_questions(id)
-  end
-
-  def wrong_answered_questions
-    Question.user_wrong_answered_questions(id)
-  end
-
-  def correct_answers_by_topics
-    Question.user_correct_answers_by_topics(id)
+  ['skipped', 'attended', 'answered', 'correct_answered', 'wrong_answered'].each do |method|
+    define_method("#{method}_questions") do
+      Question.send("user_#{method}_questions", self.id)
+    end
   end
 
   def rank

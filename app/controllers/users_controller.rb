@@ -1,19 +1,25 @@
 class UsersController < ApplicationController
-  def index
-    users = User.all
-    render json: users
-  end
+  before_action :set_user
+  layout 'pdf'
 
   def show
-    @user = User.find_by(id: params[:id])
     @user_results = @user.results
 
     respond_to do |format|
+      format.html { render 'show.pdf.erb' }
       format.pdf { render render_pdf } 
     end
   end
 
   private
+
+  def set_user
+    @user = User.find_by(id: user_param[:id])
+  end
+
+  def user_param
+    params.permit(:id)
+  end
 
   def render_pdf
     is_debug = params.key?('debug')
