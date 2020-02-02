@@ -1,37 +1,23 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-
 Run:
 
  bundle install && 
  rails db:create &&
  rails db:seed &&
  rails s
+
+
+ Admin User:
+
+ Email: admin@f22.com
+ password: password
+
+ Admin Dashboard: https://f22-labs.herokuapp.com
+
+ Generate PDF Result: https://f22-labs.herokuapp.com/admin/user/1
+      - In the bottom you can find "Generate PDF Results" - It will help you to download a user's result in PDF
  
+
+
  - Start the server and check the Below API's
 
 
