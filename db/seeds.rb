@@ -59,7 +59,7 @@ end
 
 10.times do |i|
   i += 1
-  user = User.create({ name: "User #{i}", email: "testing_#{i}" })
+  user = User.create({ name: "User #{i}", email: "testing_#{i}@gmail.com", password: 'password', password_confirmation: 'password' })
 
   rand_id = rand(1..50)
   30.times do |j|
@@ -70,3 +70,5 @@ end
     user.answers.create!(question_id: question.id, option_id: option_id)
   end
 end
+
+User.create!({ name: "Admin", email: "admin@f22.com", password: 'password', password_confirmation: 'password', is_admin: true })

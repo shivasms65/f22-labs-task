@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   has_many :answers
 
   validates :email, presence: true, uniqueness: true
@@ -12,7 +16,7 @@ class User < ApplicationRecord
   end
 
   def rank
-    User.ranks.index(self) + 1
+    User.ranks.index(self) ? (User.ranks.index(self) + 1) : "Not Yet Attendted Any Questions"
   end
 
   def good_at_topic
@@ -32,5 +36,9 @@ class User < ApplicationRecord
     results[:topic_with_most_wrong_answers] = bad_at_topic
     results[:rank] = rank
     results
+  end
+  
+  def admin?
+    is_admin
   end
 end

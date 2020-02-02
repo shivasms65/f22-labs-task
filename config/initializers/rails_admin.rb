@@ -39,5 +39,14 @@ RailsAdmin.config do |config|
     # history_show
 
     config.excluded_models = ['ActiveStorage::Blob', 'ActiveStorage::Attachment']
+
+    # Devise Authentication
+    config.authenticate_with do
+      warden.authenticate! scope: :user
+    end
+    config.current_user_method(&:current_user)
+
+    config.authorize_with :cancancan
+    config.parent_controller = 'ApplicationController'
   end
 end

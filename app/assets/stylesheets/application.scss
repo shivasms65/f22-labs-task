@@ -4,3 +4,27 @@ h1 {
     padding-top: 20%;
   }
 }
+
+.text-center {
+  text-align: center;
+}
+
+.alert {
+  font-size: 30px;
+  padding-top: 40px;
+}
+
+ul.menu-items {
+  position: absolute;
+  right: 4%;
+  list-style: none;
+
+  li {
+    display: inline;
+    padding-right: 10px;
+  }
+}
+
+.new_user {
+  font-size: 25px;
+}

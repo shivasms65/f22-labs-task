@@ -56,3 +56,8 @@ gem "rails_admin_pdf", :git => "git://github.com/stephskardal/rails_admin_pdf.gi
 
 gem 'wicked_pdf', '~> 1.4'
 gem 'wkhtmltopdf-binary'
+
+gem 'devise'
+gem 'cancancan', '~> 3.0', '>= 3.0.2'
+
+gem 'jquery-rails'

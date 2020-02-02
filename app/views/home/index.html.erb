@@ -1,1 +1,28 @@
-<h1 class='welcome-title'> Welcome To F22 Labs - Exam Section </h1>
+<div class='container'>
+  <ul class='menu-items'>
+    <% if user_signed_in? %>
+      <li>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+      </li>
+    <% else %>
+      <li>
+      <%= link_to('Login', new_user_session_path) %>  
+      </li>
+    <% end %>
+
+    <% if current_user && (can? :access, :rails_admin) %>
+      <li>
+        <%= link_to('Admin Dashboard', rails_admin_path) %>
+      </li>
+    <% end %>
+  </ul>
+  <div id="flash-messages">
+    <% flash.each do |message_type, message| %>
+      <div class="alert text-center">
+        <span><%= message %></span>
+      </div>
+    <% end %>
+  </div>
+
+  <h1 class='welcome-title'> Welcome To F22 Labs - Exam Section </h1>
+</div>
